@@ -1,0 +1,14 @@
+version: '2.0'
+services:
+        corereviewer:
+                build: 
+                        dockerfile: Dockerfile.review
+                        context: .
+                cap_add:
+                        - SYS_PTRACE 
+                security_opt:
+                        - seccomp:unconfined
+                tty: true
+                stdin_open: true
+                volumes:
+                  - /mnt/cores:/cores
