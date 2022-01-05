@@ -7,8 +7,9 @@ cp /tmp/cores/* /cores
 if [ -e /cores/dnh/dnethackdir/dnethack ]
 then
 	echo "DNH install exists, checking hash"
-	ourHash=$(md5sum /app/dnh/dnethackdir/dnethack)
-	theirHash=$(md5sum /cores/dnh/dnethackdir/dnethack)
+	ourHash=$(md5sum /app/dnh/dnethackdir/dnethack | cut -f 1 -d ' ')
+	theirHash=$(md5sum /cores/dnh/dnethackdir/dnethack | cut -f 1 -d ' ')
+	echo "$ourHash, $theirHash"
 	if [[ "$ourHash" == "$theirHash" ]]
 	then
 		echo "DNH install in date, exiting"
