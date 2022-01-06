@@ -8,7 +8,7 @@ spec:
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 1
-  replicas: 1
+  replicas: 7
   selector:
     matchLabels:
       app: dnhfuzz
@@ -27,6 +27,9 @@ spec:
           image: copinf/dnhfuzz
           tty: true
           imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: "1.1"
           securityContext:
             privileged: true
             allowPrivilegeEscalation: true
